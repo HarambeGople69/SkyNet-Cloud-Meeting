@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "88760977350",
+    "project_id": "skynet-e1efd",
+    "storage_bucket": "skynet-e1efd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88760977350:android:6ad02d020c151483a954c7",
+        "android_client_info": {
+          "package_name": "com.SkyNet.meeting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88760977350-5p5kqbd7lchrsi4dcr9d5g6r3on15dmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcH733XRQB8Ek4gcnDiaJVQ2g53IdoTAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88760977350-5p5kqbd7lchrsi4dcr9d5g6r3on15dmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

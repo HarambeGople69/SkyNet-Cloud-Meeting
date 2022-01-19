@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapp" xmlns:tools="http://schemas.android.com/tools" >
+    package="com.SkyNet.meeting" xmlns:tools="http://schemas.android.com/tools" >
    <application
    tools:replace="android:label"  
         android:label="SkyNet"

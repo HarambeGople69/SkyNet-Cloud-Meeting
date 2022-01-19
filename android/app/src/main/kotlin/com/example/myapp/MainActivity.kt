@@ -1,4 +1,4 @@
-package com.example.myapp
+package com.SkyNet.meeting
 
 import io.flutter.embedding.android.FlutterActivity
 
