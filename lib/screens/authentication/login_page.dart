@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/services/authentication/authentication.dart';
 import 'package:myapp/widgets/our_elevated_button.dart';
 import 'package:myapp/widgets/our_flutter_toast.dart';
 import 'package:myapp/widgets/our_password_field.dart';
@@ -38,64 +39,54 @@ class _LoginPageState extends State<LoginPage> {
               horizontal: ScreenUtil().setSp(20),
               vertical: ScreenUtil().setSp(10),
             ),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/logo.png",
-                  fit: BoxFit.cover,
-                  height: ScreenUtil().setSp(300),
-                  width: ScreenUtil().setSp(300),
-                ),
-                OurSizedBox(),
-                CustomTextField(
-                  icon: Icons.email,
-                  controller: _email_controller,
-                  validator: (value) {},
-                  title: "Enter email",
-                  type: TextInputType.emailAddress,
-                  number: 1,
-                ),
-                login ? Container() : OurSizedBox(),
-                login
-                    ? Container()
-                    : CustomTextField(
-                        icon: Icons.person,
-                        controller: _name_controller,
-                        validator: (value) {},
-                        title: "Enter name",
-                        type: TextInputType.name,
-                        number: 1,
-                      ),
-                OurSizedBox(),
-                PasswordForm(
-                  controller: _password_controller,
-                  validator: (value) {},
-                  number: 1,
-                  see: see,
-                  changesee: () {
-                    setState(() {
-                      see = !see;
-                    });
-                  },
-                  title: "Enter Password",
-                ),
-                login ? Container() : OurSizedBox(),
-                login
-                    ? Container()
-                    : PasswordForm(
-                        see: csee,
-                        changesee: () {
-                          setState(() {
-                            csee = csee;
-                          });
-                        },
-                        controller: _conform_controller,
-                        title: "Re-enter Password",
-                        validator: (value) {},
-                        number: 1,
-                      )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/logo.png",
+                    fit: BoxFit.cover,
+                    height: ScreenUtil().setSp(300),
+                    width: ScreenUtil().setSp(300),
+                  ),
+                  OurSizedBox(),
+                  CustomTextField(
+                    icon: Icons.email,
+                    controller: _email_controller,
+                    validator: (value) {},
+                    title: "Enter email",
+                    type: TextInputType.emailAddress,
+                    number: 1,
+                  ),
+                  login ? Container() : OurSizedBox(),
+                  login
+                      ? Container()
+                      : CustomTextField(
+                          icon: Icons.person,
+                          controller: _name_controller,
+                          validator: (value) {},
+                          title: "Enter name",
+                          type: TextInputType.name,
+                          number: 1,
+                        ),
+                  OurSizedBox(),
+                  PasswordForm(
+                    controller: _password_controller,
+                    validator: (value) {},
+                    number: 1,
+                    title: "Enter Password",
+                  ),
+                  login ? Container() : OurSizedBox(),
+                  login
+                      ? Container()
+                      : PasswordForm(
+                          controller: _conform_controller,
+                          title: "Re-enter Password",
+                          validator: (value) {},
+                          number: 1,
+                        )
+                ],
+              ),
             ),
           ),
         ),
@@ -112,10 +103,15 @@ class _LoginPageState extends State<LoginPage> {
                 title: login ? "Login" : "Back",
                 function: () {
                   if (login) {
-                    // OurToast().showErrorToast("User logged in  successfully");
+                    Auth().loginAccount(
+                      _email_controller.text.trim(),
+                      _password_controller.text.trim(),
+                    );
                   } else {
                     setState(() {
                       login = !login;
+                      _email_controller.clear();
+                      _password_controller.clear();
                     });
                   }
                 },
@@ -132,8 +128,17 @@ class _LoginPageState extends State<LoginPage> {
                   if (login) {
                     setState(() {
                       login = !login;
+                      _email_controller.clear();
+                      _password_controller.clear();
+                      _name_controller.clear();
+                      _conform_controller.clear();
                     });
                   } else {
+                    Auth().createAccount(
+                      _email_controller.text.trim(),
+                      _password_controller.text.trim(),
+                      _name_controller.text.trim(),
+                    );
                     // OurToast().showSuccessToast("User Signed Successfully");
                   }
                 },

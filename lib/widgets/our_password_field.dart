@@ -3,25 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/utils/colors.dart';
 
 class PasswordForm extends StatefulWidget {
-  final bool see;
-  final Function changesee;
+  bool see = true;
   final FocusNode? start;
   final FocusNode? end;
   final String title;
   final Function(String)? validator;
   final int number;
-  final Function(String)? onchange;
 
   final TextEditingController controller;
 
-  const PasswordForm({
+  PasswordForm({
     Key? key,
-    required this.see,
-    required this.changesee,
     required this.controller,
     required this.title,
     required this.validator,
-    this.onchange,
     this.start,
     this.end,
     required this.number,
@@ -65,7 +60,9 @@ class _PasswordFormState extends State<PasswordForm> {
             ),
             suffixIcon: InkWell(
                 onTap: () {
-                  widget.changesee();
+                  setState(() {
+                    widget.see = !widget.see;
+                  });
                 },
                 child: widget.see
                     ? Icon(
