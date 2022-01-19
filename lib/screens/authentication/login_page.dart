@@ -57,9 +57,9 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Image.asset(
                           "assets/images/logo.png",
-                          fit: BoxFit.cover,
-                          height: ScreenUtil().setSp(300),
-                          width: ScreenUtil().setSp(300),
+                          fit: BoxFit.fitWidth,
+                          height: ScreenUtil().setSp(250),
+                          width: ScreenUtil().setSp(250),
                         ),
                         OurSizedBox(),
                         CustomTextField(

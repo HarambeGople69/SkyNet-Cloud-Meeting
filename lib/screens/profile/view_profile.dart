@@ -70,9 +70,11 @@ class _ViewProfilePageState extends State<ViewProfilePage> {
                           // left: 0,
                           // right: 0,
                           child: InkWell(
-                            onTap: () {
+                            onTap: () async {
                               // print("Profile pressed");
-                              AddProfile().uploadImage();
+                              await AddProfile().uploadImage();
+                              Get.find<AuthenticationController>()
+                                  .toggle(false);
                             },
                             child: Container(
                               height: ScreenUtil().setSp(125),

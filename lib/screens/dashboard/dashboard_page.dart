@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/screens/meeting/join_meeting.dart';
 import 'package:myapp/screens/meeting/meeting.dart';
 import 'package:myapp/screens/profile/view_profile.dart';
@@ -24,6 +25,7 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       body: widgets[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
+        margin: EdgeInsets.zero,
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
         items: [
@@ -31,8 +33,14 @@ class _DashBoardState extends State<DashBoard> {
           SalomonBottomBarItem(
             icon: Icon(
               Icons.meeting_room,
+              size: ScreenUtil().setSp(20),
             ),
-            title: Text("Meeting"),
+            title: Text(
+              "Meeting",
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(15),
+              ),
+            ),
             selectedColor: Colors.purple,
           ),
 
@@ -40,8 +48,16 @@ class _DashBoardState extends State<DashBoard> {
 
           /// Profile
           SalomonBottomBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Profile"),
+            icon: Icon(
+              Icons.person,
+              size: ScreenUtil().setSp(20),
+            ),
+            title: Text(
+              "Profile",
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(15),
+              ),
+            ),
             selectedColor: Colors.teal,
           ),
         ],
