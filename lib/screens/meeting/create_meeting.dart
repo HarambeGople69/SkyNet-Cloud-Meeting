@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/services/authentication/authentication.dart';
 
 class CreateMeeting extends StatefulWidget {
   const CreateMeeting({Key? key}) : super(key: key);
@@ -12,10 +13,12 @@ class _CreateMeetingState extends State<CreateMeeting> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "Create Meeting Page",
-        ),
-      ),
+          child: ElevatedButton(
+        onPressed: () {
+          Auth().logout();
+        },
+        child: Text("Log out"),
+      )),
     );
   }
 }

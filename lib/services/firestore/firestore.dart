@@ -15,6 +15,7 @@ class Firestore {
           DateTime.now(),
         ),
         "password": password,
+        "imageUrl": ""
       }).then((value) => print("Done =========================="));
     } catch (e) {
       print(e);

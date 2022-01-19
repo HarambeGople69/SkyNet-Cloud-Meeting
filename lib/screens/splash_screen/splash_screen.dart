@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:myapp/screens/authentication/login_page.dart';
+import 'package:myapp/screens/outer%20layer/outer_layer.dart';
 import 'package:myapp/utils/colors.dart';
 import 'package:myapp/widgets/our_sized_box.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void completed() {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => LoginPage(),
+        builder: (context) => OuterLayer(),
       ),
     );
   }
