@@ -50,6 +50,7 @@ dependencies:
   image_picker: ^0.8.4+4
   flutter_native_image: ^0.0.6
   cached_network_image: ^3.2.0
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/meeting/join_meeting.dart';
+import 'package:myapp/screens/meeting/meeting.dart';
 import 'package:myapp/screens/profile/view_profile.dart';
 import 'package:myapp/services/authentication/authentication.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -12,7 +13,7 @@ class DashBoard extends StatefulWidget {
 }
 
 List widgets = [
-  JoinMeeting(),
+  MeetingMenu(),
   ViewProfilePage(),
 ];
 
