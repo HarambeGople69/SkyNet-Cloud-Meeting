@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:myapp/screens/authentication/login_page.dart';
+import 'package:myapp/utils/colors.dart';
+import 'package:myapp/widgets/our_sized_box.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,17 +16,55 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  void completed() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 3), completed);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      builder: () => GetMaterialApp(
-        // initialBinding: MyBinding(),
-        useInheritedMediaQuery: true,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(brightness: Brightness.dark),
-        // ignore: prefer_const_constructors
-
-        home: const SplashScreen(),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Image.asset(
+              "assets/images/logo.png",
+              fit: BoxFit.cover,
+              height: ScreenUtil().setSp(300),
+              width: ScreenUtil().setSp(300),
+            ),
+          ),
+          Shimmer.fromColors(
+            baseColor: lightlogoColor,
+            highlightColor: logoColor,
+            child: Text(
+              "SkyNet: Cloud Meeting",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(30),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const OurSizedBox(),
+          const OurSizedBox(),
+          const OurSizedBox(),
+          SpinKitFadingCube(
+            color: logoColor,
+            size: ScreenUtil().setSp(50),
+          ),
+        ],
       ),
     );
   }
