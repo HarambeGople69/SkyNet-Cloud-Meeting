@@ -11,7 +11,7 @@ class Firestore {
       await FirebaseFirestore.instance.collection("Users").doc(uid).set({
         "email": email,
         "name": name,
-        "AddedOn": DateFormat('yyy-MM--dd').format(
+        "AddedOn": DateFormat('yyy-MM-dd').format(
           DateTime.now(),
         ),
         "password": password,
