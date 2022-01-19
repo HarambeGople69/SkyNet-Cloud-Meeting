@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myapp/controller/authentication_controller.dart';
 import 'package:myapp/services/firestore/firestore.dart';
 import 'package:myapp/widgets/our_flutter_toast.dart';
 
@@ -12,6 +14,8 @@ class Auth {
         password: password,
       )
           .then((value) {
+        Get.find<AuthenticationController>().toggle(false);
+
         Firestore().addUser(
           FirebaseAuth.instance.currentUser!.uid,
           password,
@@ -22,6 +26,8 @@ class Auth {
         OurToast().showSuccessToast("User signed successfully");
       });
     } on FirebaseAuthException catch (e) {
+      Get.find<AuthenticationController>().toggle(false);
+
       OurToast().showErrorToast(e.message!);
     }
   }
@@ -31,9 +37,13 @@ class Auth {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) {
+        Get.find<AuthenticationController>().toggle(false);
+
         OurToast().showSuccessToast("User signed successfully");
       });
     } on FirebaseAuthException catch (e) {
+      Get.find<AuthenticationController>().toggle(false);
+
       OurToast().showErrorToast(e.message!);
     }
   }
