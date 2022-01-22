@@ -116,11 +116,16 @@ class _LoginPageState extends State<LoginPage> {
                       function: () {
                         if (login) {
                           Get.find<AuthenticationController>().toggle(true);
-
-                          Auth().loginAccount(
-                            _email_controller.text.trim(),
-                            _password_controller.text.trim(),
-                          );
+                          if (_email_controller.text.trim().isNotEmpty ||
+                              _password_controller.text.trim().isNotEmpty) {
+                            Auth().loginAccount(
+                              _email_controller.text.trim(),
+                              _password_controller.text.trim(),
+                            );
+                          } else {
+                            OurToast().showErrorToast("Fields can't be empty");
+                            Get.find<AuthenticationController>().toggle(false);
+                          }
                         } else {
                           setState(() {
                             login = !login;
@@ -149,11 +154,23 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         } else {
                           Get.find<AuthenticationController>().toggle(true);
-                          Auth().createAccount(
-                            _email_controller.text.trim(),
-                            _password_controller.text.trim(),
-                            _name_controller.text.trim(),
-                          );
+                          if (_password_controller.text.trim() !=
+                              _conform_controller.text.trim()) {
+                            OurToast().showErrorToast("Password Didn't match");
+                            Get.find<AuthenticationController>().toggle(false);
+                          } else if (_password_controller.text.trim().isEmpty ||
+                              _name_controller.text.trim().isEmpty ||
+                              _email_controller.text.trim().isEmpty ||
+                              _conform_controller.text.trim().isEmpty) {
+                            OurToast().showErrorToast("Fields can't be empty");
+                            Get.find<AuthenticationController>().toggle(false);
+                          } else {
+                            Auth().createAccount(
+                              _email_controller.text.trim(),
+                              _password_controller.text.trim(),
+                              _name_controller.text.trim(),
+                            );
+                          }
                           // OurToast().showSuccessToast("User Signed Successfully");
                         }
                       },

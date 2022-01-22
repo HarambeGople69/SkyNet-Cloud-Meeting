@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return ScreenUtilInit(
       builder: () => GetMaterialApp(
+        
         initialBinding: MyBinding(),
         useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
